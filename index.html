@@ -181,6 +181,23 @@
   .authority-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;}
   .video-card{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:9/16;max-width:380px;margin:0 auto;background:var(--black);}
   .video-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+
+  /* ---------- TESTIMONIOS CAROUSEL ---------- */
+  .testi-carousel{position:relative;max-width:900px;margin:0 auto;}
+  .testi-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 6px 10px;scrollbar-width:none;}
+  .testi-track::-webkit-scrollbar{display:none;}
+  .testi-slide{flex:0 0 auto;scroll-snap-align:center;width:260px;}
+  .testi-slide .video-card{max-width:none;}
+  .testi-nav{position:absolute;top:38%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:var(--shadow);border:none;cursor:pointer;font-size:1.5rem;line-height:1;color:var(--black);display:flex;align-items:center;justify-content:center;z-index:3;}
+  .testi-nav.prev{left:-8px;}
+  .testi-nav.next{right:-8px;}
+  .testi-nav:disabled{opacity:.3;cursor:default;}
+  .testi-dots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
+  .testi-dot{width:8px;height:8px;border-radius:50%;background:#ddd2ba;cursor:pointer;border:none;padding:0;}
+  .testi-dot.active{background:var(--gold);}
+  @media (max-width:640px){
+    .testi-nav{display:none;}
+  }
   .chat-mock{background:#fff;border-radius:18px;padding:18px 20px;box-shadow:var(--shadow);max-width:340px;margin-top:28px;}
   .chat-bubble{background:#dcf8c6;border-radius:14px 14px 14px 2px;padding:12px 14px;font-size:.86rem;line-height:1.5;color:#1b1b1b;}
   .chat-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:.76rem;color:#5c554a;}
@@ -543,8 +560,29 @@
       <h2>Clientas reales, no actores</h2>
       <p>Así reacciona la gente cuando le llega su pedido. Sin guion.</p>
     </div>
-    <div class="video-card">
-      <iframe src="https://player.vimeo.com/video/1220508127?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Testimonio real de clienta DASI"></iframe>
+    <div class="testi-carousel">
+      <button class="testi-nav prev" id="testiPrev" aria-label="Anterior">‹</button>
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-slide">
+          <div class="video-card">
+            <iframe src="https://player.vimeo.com/video/1220508127?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Testimonio real de clienta DASI"></iframe>
+          </div>
+        </div>
+        <!-- Más fotos/videos de clientas van acá como .testi-slide adicionales -->
+      </div>
+      <button class="testi-nav next" id="testiNext" aria-label="Siguiente">›</button>
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+  </div>
+</section>
+
+<!-- ================= RESEÑAS WHATSAPP ================= -->
+<section class="dark" id="resenas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Conversaciones reales</span>
+      <h2>Lo que nos escriben por WhatsApp</h2>
+      <p>Capturas reales de conversaciones con clientas — próximamente en esta sección.</p>
     </div>
   </div>
 </section>
@@ -702,6 +740,50 @@
     navLinks.classList.remove("mobile-open");
     navLinks.removeAttribute("style");
   }));
+
+  // Testimonios carousel
+  (function initTestiCarousel() {
+    const track = document.getElementById("testiTrack");
+    const prevBtn = document.getElementById("testiPrev");
+    const nextBtn = document.getElementById("testiNext");
+    const dotsWrap = document.getElementById("testiDots");
+    if (!track) return;
+    const slides = Array.from(track.children);
+
+    if (slides.length <= 1) {
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      return;
+    }
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "testi-dot" + (i === 0 ? " active" : "");
+      dot.setAttribute("aria-label", `Ir al testimonio ${i + 1}`);
+      dot.addEventListener("click", () => {
+        slides[i].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      });
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function updateActive() {
+      const trackCenter = track.scrollLeft + track.clientWidth / 2;
+      let closest = 0, closestDist = Infinity;
+      slides.forEach((s, i) => {
+        const dist = Math.abs((s.offsetLeft + s.clientWidth / 2) - trackCenter);
+        if (dist < closestDist) { closestDist = dist; closest = i; }
+      });
+      dots.forEach((d, i) => d.classList.toggle("active", i === closest));
+      prevBtn.disabled = track.scrollLeft <= 4;
+      nextBtn.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+    }
+
+    prevBtn.addEventListener("click", () => track.scrollBy({ left: -(slides[0].clientWidth + 22), behavior: "smooth" }));
+    nextBtn.addEventListener("click", () => track.scrollBy({ left: slides[0].clientWidth + 22, behavior: "smooth" }));
+    track.addEventListener("scroll", () => window.requestAnimationFrame(updateActive));
+    updateActive();
+  })();
 
   // FAQ accordion
   document.querySelectorAll(".faq-item").forEach(item => {
