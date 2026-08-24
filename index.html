@@ -198,6 +198,15 @@
   @media (max-width:640px){
     .testi-nav{display:none;}
   }
+
+  /* ---------- RESEÑAS WHATSAPP ---------- */
+  .resenas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;max-width:760px;margin:0 auto;}
+  .resena-card{background:var(--charcoal-2);border:1px solid rgba(201,162,39,.16);border-radius:var(--radius);overflow:hidden;}
+  .resena-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
+  .resena-card p{padding:16px 18px;font-size:.86rem;line-height:1.55;color:rgba(250,245,236,.75);}
+  @media (max-width:640px){
+    .resenas-grid{grid-template-columns:1fr;}
+  }
   .chat-mock{background:#fff;border-radius:18px;padding:18px 20px;box-shadow:var(--shadow);max-width:340px;margin-top:28px;}
   .chat-bubble{background:#dcf8c6;border-radius:14px 14px 14px 2px;padding:12px 14px;font-size:.86rem;line-height:1.5;color:#1b1b1b;}
   .chat-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:.76rem;color:#5c554a;}
@@ -568,6 +577,16 @@
             <iframe src="https://player.vimeo.com/video/1220508127?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Testimonio real de clienta DASI"></iframe>
           </div>
         </div>
+        <div class="testi-slide">
+          <div class="video-card">
+            <iframe src="https://player.vimeo.com/video/1220679100?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Clienta feliz DASI"></iframe>
+          </div>
+        </div>
+        <div class="testi-slide">
+          <div class="video-card">
+            <iframe src="https://player.vimeo.com/video/1220679262?title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="Clienta feliz DASI"></iframe>
+          </div>
+        </div>
         <!-- Más fotos/videos de clientas van acá como .testi-slide adicionales -->
       </div>
       <button class="testi-nav next" id="testiNext" aria-label="Siguiente">›</button>
@@ -581,8 +600,18 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Conversaciones reales</span>
-      <h2>Lo que nos escriben por WhatsApp</h2>
-      <p>Capturas reales de conversaciones con clientas — próximamente en esta sección.</p>
+      <h2>Lo que nos mandan por WhatsApp</h2>
+      <p>Fotos que nos comparten las clientas mismas, apenas les llega el pedido.</p>
+    </div>
+    <div class="resenas-grid">
+      <div class="resena-card">
+        <img src="assets/envio-real.jpg" alt="Caja del Tocador Hollywood despachada por Vía Cargo">
+        <p>"Buenas tardes 😊" — así llega, embalado y marcado como frágil.</p>
+      </div>
+      <div class="resena-card">
+        <img src="assets/clienta-entrega.jpg" alt="Tocador Hollywood ya instalado en la casa de una clienta">
+        <p>Así queda instalado en su cuarto, foto que nos reenvía la propia clienta.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -595,10 +624,9 @@
       <h2>Tu rutina, con otra luz</h2>
     </div>
     <div class="gallery-grid">
-      <img class="g1" src="assets/hero-vanity.jpg" alt="Rutina de maquillaje en Tocador Hollywood DASI">
-      <img src="assets/tocador-styled-2.jpg" alt="Tocador Hollywood ambientado">
+      <img class="g1" src="assets/tocador-taller.jpg" alt="Tocador Hollywood DASI recién fabricado">
       <img src="assets/tocador-open.jpg" alt="Cajones y guardado real del Tocador Hollywood DASI">
-      <img src="assets/queen-hero.jpg" alt="Inspiración Pie de Reyna">
+      <img src="assets/clienta-entrega.jpg" alt="Tocador Hollywood instalado en casa de una clienta">
       <img src="assets/pie-de-reyna-3.jpg" alt="Pie de Reyna DASI">
       <img src="assets/tocador-detail.jpg" alt="Tocador Hollywood DASI, vista completa">
       <div class="gallery-cta">
