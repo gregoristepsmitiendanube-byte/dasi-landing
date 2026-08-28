@@ -109,7 +109,7 @@
   .brand .mark{width:42px;height:42px;flex:none;border-radius:50%;overflow:hidden;border:1.5px solid rgba(201,162,39,.55);background:#0b0a0c;box-shadow:0 0 0 3px rgba(201,162,39,.12);}
   .brand .mark img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;transform:scale(2.13);}
   .brand span{font-family:'Playfair Display',serif;color:var(--cream);font-size:1.4rem;letter-spacing:.14em;}
-  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
   .nav-links a{color:var(--ivory);font-size:.88rem;font-weight:500;letter-spacing:.02em;opacity:.85;transition:opacity .2s, color .2s;}
   .nav-links a:hover{opacity:1;color:var(--gold-light);}
   .nav-cta{display:flex;align-items:center;gap:16px;}
@@ -317,6 +317,7 @@
     <div class="nav-links">
       <a href="#tocador-hollywood">Tocador Hollywood</a>
       <a href="#pie-de-reyna">Pie de Reyna</a>
+      <a href="#tocador-nena">Tocador Nena</a>
       <a href="#como-comprar">Cómo comprar</a>
       <a href="#cobertura">Cobertura</a>
       <a href="#preguntas">Preguntas</a>
@@ -419,6 +420,33 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Hecho a pedido en nuestra fábrica</li>
         </ul>
         <a href="#" class="btn btn-dark wa-link" data-msg="pie">Consultar precio y stock</a>
+        <p class="price-note">Te confirmamos precio, stock y tiempo de envío a tu localidad por WhatsApp. 3 y 6 cuotas sin interés · Garantía de 60 días.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TOCADOR NENA ================= -->
+<section id="tocador-nena">
+  <div class="wrap">
+    <div class="product">
+      <div class="product-media">
+        <div class="stack">
+          <img class="main" src="assets/tocador-nena-1.jpg" alt="Tocador para nenas DASI, espejo corazón con luces">
+          <img class="tag tag-1" src="assets/tocador-nena-2.jpg" alt="Tocador para nenas DASI en blanco y rosa">
+        </div>
+      </div>
+      <div class="product-copy">
+        <span class="eyebrow">Para las más chicas de la casa</span>
+        <h3>Tocador Nena</h3>
+        <p class="desc">La versión chica del clásico: espejo corazón con luces tipo Hollywood, cajones y puerta para guardar todo, banqueta a juego. Disponible en blanco y rosa.</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Espejo corazón con luces tipo Hollywood</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Cajones + puerta con guardado, banqueta incluida</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Disponible en blanco y rosa</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Hecho a pedido en nuestra fábrica</li>
+        </ul>
+        <a href="#" class="btn btn-dark wa-link" data-msg="nena">Consultar precio y stock</a>
         <p class="price-note">Te confirmamos precio, stock y tiempo de envío a tu localidad por WhatsApp. 3 y 6 cuotas sin interés · Garantía de 60 días.</p>
       </div>
     </div>
@@ -975,6 +1003,7 @@
         <h5>Productos</h5>
         <a href="#tocador-hollywood">Tocador Hollywood</a>
         <a href="#pie-de-reyna">Pie de Reyna</a>
+        <a href="#tocador-nena">Tocador Nena</a>
         <a href="#galeria">Galería</a>
       </div>
       <div class="footer-col">
@@ -1009,6 +1038,7 @@
   const MESSAGES = {
     tocador: "Hola! Me interesa el Tocador Hollywood. Quiero saber si llegás a mi localidad y cuánto tarda el envío.",
     pie: "Hola! Me interesa el Pie de Reyna. Quiero saber si llegás a mi localidad y cuánto tarda el envío.",
+    nena: "Hola! Me interesa el Tocador Nena. Quiero saber si llegás a mi localidad y cuánto tarda el envío.",
     general: "Hola! Quiero más información sobre los tocadores DASI."
   };
 
